@@ -15,6 +15,11 @@ install:
 script:
 - cd decide
 - cp travis_local_settings.py local_settings.py
+- python ./manage.py createsuperuser
+- admin
+- 
+- adminadmin
+- adminadmin
 - python ./manage.py test --keepdb
 - rm local_settings.py
 deploy:
