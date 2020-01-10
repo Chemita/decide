@@ -28,7 +28,7 @@ class TestConfiguration():
   def test_configuration(self):
     self.driver = webdriver.Chrome()
     self.vars = {}
-    self.driver.get("http://127.0.0.1:8000/admin/login/")
+    self.driver.get("http://localhost:8000/admin/login/")
     self.driver.set_window_size(1850, 1053)
     self.driver.find_element(By.ID, "id_username").send_keys("admin")
     self.driver.find_element(By.ID, "id_password").send_keys("adminadmin")
@@ -62,7 +62,7 @@ class TestConfiguration():
     self.driver.find_element(By.ID, "id_name").send_keys("Test")
     self.driver.find_element(By.ID, "id_url").click()
     self.driver.find_element(By.ID, "id_url").click()
-    self.driver.find_element(By.ID, "id_url").send_keys("http://127.0.0.1:8000")
+    self.driver.find_element(By.ID, "id_url").send_keys("http://localhost:8000")
     self.driver.find_element(By.NAME, "_save").click()
     self.driver.switch_to_window(self.vars["root"])
     element = self.driver.find_element(By.NAME, "_save")
