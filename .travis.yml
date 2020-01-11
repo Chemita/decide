@@ -15,12 +15,8 @@ install:
 script:
 - cd decide
 - cp travis_local_settings.py local_settings.py
-- python ./manage.py createsuperuser
-- admin
-- 
-- adminadmin
-- adminadmin
-- python ./manage.py test --keepdb
+- echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', '', 'adminadmin')" | python manage.py shell
+- python ./manage.py test booth --keepdb
 - rm local_settings.py
 deploy:
   provider: heroku
