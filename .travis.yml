@@ -7,6 +7,9 @@ before_script:
 - psql -U postgres -c "create user decide password 'decide'"
 - psql -U postgres -c "create database test_decide owner decide"
 - psql -U postgres -c "ALTER USER decide CREATEDB"
+- wget http://chromedriver.storage.googleapis.com/79.0.3945.16/chromedriver_linux64.zip
+- unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python2.7.12/bin/
+- export CHROME_BIN=chromium-browser
 language: python
 python:
 - '3.6'
@@ -15,7 +18,7 @@ install:
 script:
 - cd decide
 - cp travis_local_settings.py local_settings.py
-- python ./manage.py test booth --keepdb
+- python ./manage.py test --keepdb
 - rm local_settings.py
 deploy:
   provider: heroku
